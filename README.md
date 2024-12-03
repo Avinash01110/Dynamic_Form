@@ -26,5 +26,5 @@ This project demonstrates a dynamic form implementation using **React** and **Ta
 ## Dependencies
 - React
 - Tailwind CSS
-- React Hot Toast (for user feedback notifications)
+- React Hot Toast
 - Framer motion
