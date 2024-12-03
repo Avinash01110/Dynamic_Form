@@ -60,13 +60,13 @@ const DynamicForm = () => {
     formFields.forEach((field) => {
       if (
         field.required &&
-        (!formData[field.name] || formData[field.name].trim() == "")
+        (!formData[field.name] || formData[field.name].trim() === "")
       ) {
         errors[field.name] = `${field.label} is required`;
       }
     });
     setFieldErrors(errors);
-    return Object.keys(errors).length == 0;
+    return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = (e) => {
@@ -82,7 +82,7 @@ const DynamicForm = () => {
       // Update existing entry
       setSubmittedData((prev) =>
         prev.map((entry) =>
-          entry.id == editingId
+          entry.id === editingId
             ? { ...entry, ...formData, formType: selectedFormType }
             : entry
         )
@@ -106,7 +106,7 @@ const DynamicForm = () => {
   };
 
   const handleEditEntry = (id) => {
-    const entryToEdit = submittedData.find((entry) => entry.id == id);
+    const entryToEdit = submittedData.find((entry) => entry.id === id);
     if (entryToEdit) {
       // Set form fields based on the selected entry's form type
       setSelectedFormType(entryToEdit.formType);
@@ -160,7 +160,7 @@ const DynamicForm = () => {
                     {field.label}{" "}
                     {field.required && <span className="text-red-500">*</span>}
                   </label>
-                  {field.type == "dropdown" ? (
+                  {field.type === "dropdown" ? (
                     <select
                       name={field.name}
                       value={formData[field.name] || ""}
@@ -183,8 +183,8 @@ const DynamicForm = () => {
                       onChange={handleChange}
                       className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline 
                         ${fieldErrors[field.name] ? "border-red-500" : ""}`}
-                      min={field.name == "age" ? 0 : ""}
-                      maxLength={field.name == "cvv" ? 4 : ""}
+                      min={field.name === "age" ? 0 : ""}
+                      maxLength={field.name === "cvv" ? 4 : ""}
                     />
                   )}
                   {fieldErrors[field.name] && (
